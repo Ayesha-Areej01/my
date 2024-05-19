@@ -24,7 +24,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
 
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
-  useEffect(() => setShowConfetti(true), [])
+  useEffect(() => setShowConfetti(true))
 
   const { color, model, finish, material } = configuration
 
@@ -57,8 +57,10 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
   const handleCheckout = () => {
     if (user) {
+      // create payment session
       createPaymentSession({ configId: id })
     } else {
+      // need to log in
       localStorage.setItem('configurationId', id)
       setIsLoginModalOpen(true)
     }
@@ -102,7 +104,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
               <ol className='mt-3 text-zinc-700 list-disc list-inside'>
                 <li>Wireless charging compatible</li>
                 <li>TPU shock absorption</li>
-                <li>Perfect fit for your phone</li>
+                <li>Packaging made from recycled materials</li>
                 <li>5 year print warranty</li>
               </ol>
             </div>
@@ -110,7 +112,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
               <p className='font-medium text-zinc-950'>Materials</p>
               <ol className='mt-3 text-zinc-700 list-disc list-inside'>
                 <li>High-quality, durable material</li>
-                <li>Scratch and fingerprint resistant coating</li>
+                <li>Scratch- and fingerprint resistant coating</li>
               </ol>
             </div>
           </div>
@@ -168,4 +170,4 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   )
 }
 
-export default DesignPreview;
+export default DesignPreview
